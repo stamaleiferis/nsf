@@ -1,0 +1,254 @@
+[
+  {
+    "separation_snr_db": -33.24822395038253,
+    "snr_improvement_db": 27.40457153898044,
+    "waveform_correlation": 0.3505848271211733,
+    "spatial_correlation": -0.030519404923647114,
+    "artifact_residual_fraction": 4.533356693992635e-05,
+    "axis": "pulse_amplitude_mm",
+    "value": 0.01
+  },
+  {
+    "separation_snr_db": -19.275302037823728,
+    "snr_improvement_db": 27.398093364818862,
+    "waveform_correlation": 0.8812780545839112,
+    "spatial_correlation": -0.0015789448791917852,
+    "artifact_residual_fraction": 4.8166209253985056e-05,
+    "axis": "pulse_amplitude_mm",
+    "value": 0.05
+  },
+  {
+    "separation_snr_db": -13.273729110897252,
+    "snr_improvement_db": 27.379066378465723,
+    "waveform_correlation": 0.9658513265728874,
+    "spatial_correlation": 0.08372294492227565,
+    "artifact_residual_fraction": 5.6312484349104266e-05,
+    "axis": "pulse_amplitude_mm",
+    "value": 0.1
+  },
+  {
+    "separation_snr_db": -9.78292166629441,
+    "snr_improvement_db": 27.348048641954936,
+    "waveform_correlation": 0.9843773143451766,
+    "spatial_correlation": 0.20777701902968496,
+    "artifact_residual_fraction": 6.957595078038457e-05,
+    "axis": "pulse_amplitude_mm",
+    "value": 0.15
+  },
+  {
+    "separation_snr_db": -3.924325800053942,
+    "snr_improvement_db": 27.18604459491578,
+    "waveform_correlation": 0.9960234577218786,
+    "spatial_correlation": 0.5913010520532194,
+    "artifact_residual_fraction": 0.00014006949809119133,
+    "axis": "pulse_amplitude_mm",
+    "value": 0.3
+  },
+  {
+    "separation_snr_db": 0.153292101998993,
+    "snr_improvement_db": 26.82668750464159,
+    "waveform_correlation": 0.9985627850892083,
+    "spatial_correlation": 0.8283266949495562,
+    "artifact_residual_fraction": 0.00030570157321185506,
+    "axis": "pulse_amplitude_mm",
+    "value": 0.5
+  },
+  {
+    "separation_snr_db": -9.782921697729694,
+    "snr_improvement_db": 8.044552565450399,
+    "waveform_correlation": 0.9843773150825181,
+    "spatial_correlation": 0.20777700813548278,
+    "artifact_residual_fraction": 0.006957594718785608,
+    "axis": "artifact_amplitude_mm",
+    "value": 0.1
+  },
+  {
+    "separation_snr_db": -9.7829216837583,
+    "snr_improvement_db": 21.347248928590272,
+    "waveform_correlation": 0.9843773147548768,
+    "spatial_correlation": 0.2077770129773172,
+    "artifact_residual_fraction": 0.00027830379513788184,
+    "axis": "artifact_amplitude_mm",
+    "value": 0.5
+  },
+  {
+    "separation_snr_db": -9.78292166629441,
+    "snr_improvement_db": 27.348048641954936,
+    "waveform_correlation": 0.9843773143451766,
+    "spatial_correlation": 0.20777701902968496,
+    "artifact_residual_fraction": 6.957595078038457e-05,
+    "axis": "artifact_amplitude_mm",
+    "value": 1.0
+  },
+  {
+    "separation_snr_db": -9.782921631367769,
+    "snr_improvement_db": 33.36473302886619,
+    "waveform_correlation": 0.9843773135252807,
+    "spatial_correlation": 0.2077770311346872,
+    "artifact_residual_fraction": 1.739398869317646e-05,
+    "axis": "artifact_amplitude_mm",
+    "value": 2.0
+  },
+  {
+    "separation_snr_db": -9.782921526597171,
+    "snr_improvement_db": 41.32310747706866,
+    "waveform_correlation": 0.9843773110616278,
+    "spatial_correlation": 0.20777706745176355,
+    "artifact_residual_fraction": 2.7830386701440957e-06,
+    "axis": "artifact_amplitude_mm",
+    "value": 5.0
+  },
+  {
+    "separation_snr_db": -9.782921667238842,
+    "snr_improvement_db": 27.219834451008676,
+    "waveform_correlation": 0.9843773147992672,
+    "spatial_correlation": 0.2077770194231564,
+    "artifact_residual_fraction": 7.166167309382597e-05,
+    "axis": "artifact_degree",
+    "value": 1
+  },
+  {
+    "separation_snr_db": -9.78292166629441,
+    "snr_improvement_db": 27.348048641954936,
+    "waveform_correlation": 0.9843773143451766,
+    "spatial_correlation": 0.20777701902968496,
+    "artifact_residual_fraction": 6.957595078038457e-05,
+    "axis": "artifact_degree",
+    "value": 2
+  },
+  {
+    "separation_snr_db": -10.552600022531218,
+    "snr_improvement_db": 26.642372785305007,
+    "waveform_correlation": 0.9843773146650864,
+    "spatial_correlation": 0.18543299537001937,
+    "artifact_residual_fraction": 0.00041254077241874613,
+    "axis": "artifact_degree",
+    "value": 3
+  },
+  {
+    "separation_snr_db": -9.574994008469627,
+    "snr_improvement_db": 27.34672557726042,
+    "waveform_correlation": 0.985340401605922,
+    "spatial_correlation": 0.2216659302032167,
+    "artifact_residual_fraction": 6.94000718344766e-05,
+    "axis": "heart_rate_bpm",
+    "value": 50
+  },
+  {
+    "separation_snr_db": -9.78292166629441,
+    "snr_improvement_db": 27.348048641954936,
+    "waveform_correlation": 0.9843773143451766,
+    "spatial_correlation": 0.20777701902968496,
+    "artifact_residual_fraction": 6.957595078038457e-05,
+    "axis": "heart_rate_bpm",
+    "value": 72
+  },
+  {
+    "separation_snr_db": -9.760955138722963,
+    "snr_improvement_db": 27.351012365321502,
+    "waveform_correlation": 0.9851899139987816,
+    "spatial_correlation": 0.21649095298320736,
+    "artifact_residual_fraction": 6.708339374808849e-05,
+    "axis": "heart_rate_bpm",
+    "value": 100
+  },
+  {
+    "separation_snr_db": -9.762752915916797,
+    "snr_improvement_db": 27.34576621808673,
+    "waveform_correlation": 0.9840992569824134,
+    "spatial_correlation": 0.20155075424245622,
+    "artifact_residual_fraction": 6.980586728165562e-05,
+    "axis": "heart_rate_bpm",
+    "value": 130
+  },
+  {
+    "separation_snr_db": 8.459972919105317,
+    "snr_improvement_db": 45.58693024137041,
+    "waveform_correlation": 0.9999599873559821,
+    "spatial_correlation": 0.972255759282155,
+    "artifact_residual_fraction": 2.3210770212105865e-05,
+    "axis": "noise_sigma_mm",
+    "value": 0.001
+  },
+  {
+    "separation_snr_db": -3.9243257487552965,
+    "snr_improvement_db": 33.20272899819904,
+    "waveform_correlation": 0.9960234577809629,
+    "spatial_correlation": 0.5913010667118384,
+    "artifact_residual_fraction": 3.501737357686075e-05,
+    "axis": "noise_sigma_mm",
+    "value": 0.01
+  },
+  {
+    "separation_snr_db": -17.694514212515084,
+    "snr_improvement_db": 19.472086582898267,
+    "waveform_correlation": 0.91295833469963,
+    "spatial_correlation": 0.011452863089803101,
+    "artifact_residual_fraction": 0.00030866302357283296,
+    "axis": "noise_sigma_mm",
+    "value": 0.05
+  },
+  {
+    "separation_snr_db": -23.708062592455743,
+    "snr_improvement_db": 13.594977807366579,
+    "waveform_correlation": 0.7458040958603276,
+    "spatial_correlation": -0.020828584244419347,
+    "artifact_residual_fraction": 0.0011585126154998314,
+    "axis": "noise_sigma_mm",
+    "value": 0.1
+  },
+  {
+    "separation_snr_db": -29.72678162286737,
+    "snr_improvement_db": 8.100692640312722,
+    "waveform_correlation": 0.4890318246673953,
+    "spatial_correlation": -0.029014800765092497,
+    "artifact_residual_fraction": 0.004550853564127256,
+    "axis": "noise_sigma_mm",
+    "value": 0.2
+  },
+  {
+    "separation_snr_db": -9.78292166629441,
+    "snr_improvement_db": 27.348048641954936,
+    "waveform_correlation": 0.9843773143451766,
+    "spatial_correlation": 0.20777701902968496,
+    "artifact_residual_fraction": 6.957595078038457e-05,
+    "axis": "artery_offset_mm",
+    "value": 0.0
+  },
+  {
+    "separation_snr_db": -9.799647072161621,
+    "snr_improvement_db": 27.331323236087727,
+    "waveform_correlation": 0.9836394608466407,
+    "spatial_correlation": 0.18807636157101135,
+    "artifact_residual_fraction": 7.775082926614828e-05,
+    "axis": "artery_offset_mm",
+    "value": 1.0
+  },
+  {
+    "separation_snr_db": -9.841023170867404,
+    "snr_improvement_db": 27.289947137381944,
+    "waveform_correlation": 0.9813305585899107,
+    "spatial_correlation": 0.14392265263148524,
+    "artifact_residual_fraction": 9.685211444429681e-05,
+    "axis": "artery_offset_mm",
+    "value": 2.0
+  },
+  {
+    "separation_snr_db": -9.906850223130382,
+    "snr_improvement_db": 27.22412008511896,
+    "waveform_correlation": 0.977087484443562,
+    "spatial_correlation": 0.09071738617285505,
+    "artifact_residual_fraction": 0.00012694659412783155,
+    "axis": "artery_offset_mm",
+    "value": 3.0
+  },
+  {
+    "separation_snr_db": -10.07542388887478,
+    "snr_improvement_db": 27.055546419374565,
+    "waveform_correlation": 0.958568792187649,
+    "spatial_correlation": 0.008897676194327239,
+    "artifact_residual_fraction": 0.00020416755368686307,
+    "axis": "artery_offset_mm",
+    "value": 5.0
+  }
+]

@@ -1,0 +1,261 @@
+{
+  "poly_only": [
+    {
+      "separation_snr_db": -11.867727510129138,
+      "snr_improvement_db": 18.14586981340795,
+      "waveform_correlation": -0.20487097553622458,
+      "spatial_correlation": 0.0737718626165908,
+      "artifact_residual_fraction": 0.4974116886369616,
+      "raw_snr_db": -30.013597323537084,
+      "pulse_rms": 1.6671747792769582,
+      "artifact_rms": 40.691283950132075,
+      "seed": 0
+    },
+    {
+      "separation_snr_db": -16.272692399065328,
+      "snr_improvement_db": 14.534467845159032,
+      "waveform_correlation": -0.4101270834558243,
+      "spatial_correlation": 0.048580173696225436,
+      "artifact_residual_fraction": 0.9130759557731157,
+      "raw_snr_db": -30.80716024422436,
+      "pulse_rms": 1.3510450754002912,
+      "artifact_rms": 45.00735709143417,
+      "seed": 1
+    },
+    {
+      "separation_snr_db": -4.965488907903211,
+      "snr_improvement_db": 23.718355267842124,
+      "waveform_correlation": 0.9418413860065298,
+      "spatial_correlation": 0.39269750268206594,
+      "artifact_residual_fraction": 0.28419962967664736,
+      "raw_snr_db": -28.683844175745335,
+      "pulse_rms": 1.2298467256794878,
+      "artifact_rms": 31.078618992292366,
+      "seed": 2
+    },
+    {
+      "separation_snr_db": -0.8875423998202363,
+      "snr_improvement_db": 23.729081770096727,
+      "waveform_correlation": 0.9589815732538322,
+      "spatial_correlation": 0.6522342222342677,
+      "artifact_residual_fraction": 0.0032125516660053365,
+      "raw_snr_db": -24.616624169916964,
+      "pulse_rms": 3.1065157945029522,
+      "artifact_rms": 52.726515210377826,
+      "seed": 3
+    },
+    {
+      "separation_snr_db": -18.315754197365756,
+      "snr_improvement_db": 8.596240118706014,
+      "waveform_correlation": -0.2724496923381413,
+      "spatial_correlation": 0.38607390083961457,
+      "artifact_residual_fraction": 0.4364128584302371,
+      "raw_snr_db": -26.91199431607177,
+      "pulse_rms": 2.36346279959187,
+      "artifact_rms": 70.78010791446461,
+      "seed": 4
+    },
+    {
+      "separation_snr_db": -18.66187695264466,
+      "snr_improvement_db": 11.475659967397164,
+      "waveform_correlation": 0.4215029366216751,
+      "spatial_correlation": 0.19723570132259902,
+      "artifact_residual_fraction": 0.9530933768003095,
+      "raw_snr_db": -30.137536920041825,
+      "pulse_rms": 1.6281781152862758,
+      "artifact_rms": 37.148574845726,
+      "seed": 5
+    },
+    {
+      "separation_snr_db": -20.5925285810708,
+      "snr_improvement_db": 12.568929640283049,
+      "waveform_correlation": 0.299779371335716,
+      "spatial_correlation": 0.2515234722211168,
+      "artifact_residual_fraction": 1.9227925639042238,
+      "raw_snr_db": -33.16145822135385,
+      "pulse_rms": 0.9489104095416621,
+      "artifact_rms": 23.74010457347031,
+      "seed": 6
+    },
+    {
+      "separation_snr_db": -17.484068244993388,
+      "snr_improvement_db": 2.4936285947399455,
+      "waveform_correlation": 0.7823174370488256,
+      "spatial_correlation": 0.017308299108059796,
+      "artifact_residual_fraction": 1.303913284393211,
+      "raw_snr_db": -19.977696839733333,
+      "pulse_rms": 3.214875938632505,
+      "artifact_rms": 33.854338709141444,
+      "seed": 7
+    },
+    {
+      "separation_snr_db": -10.600371537654398,
+      "snr_improvement_db": 3.7054560396246163,
+      "waveform_correlation": 0.706315491392742,
+      "spatial_correlation": 0.2259771429882184,
+      "artifact_residual_fraction": 0.753175601782664,
+      "raw_snr_db": -14.305827577279015,
+      "pulse_rms": 2.0862402165076035,
+      "artifact_rms": 18.19119244414637,
+      "seed": 8
+    },
+    {
+      "separation_snr_db": -13.441715121955692,
+      "snr_improvement_db": 17.859729882030248,
+      "waveform_correlation": 0.032656879945697076,
+      "spatial_correlation": 0.07517141238105751,
+      "artifact_residual_fraction": 0.027441207607208553,
+      "raw_snr_db": -31.30144500398594,
+      "pulse_rms": 2.2586361651334608,
+      "artifact_rms": 81.96435646078726,
+      "seed": 9
+    }
+  ],
+  "poly_plus_gaussian": [
+    {
+      "separation_snr_db": -4.723960966076196,
+      "snr_improvement_db": 25.318673955855843,
+      "waveform_correlation": -0.20678766747691776,
+      "spatial_correlation": 0.4390449363001337,
+      "artifact_residual_fraction": 0.5040943118457897,
+      "raw_snr_db": -30.042634921932038,
+      "pulse_rms": 1.66705769724473,
+      "artifact_rms": 40.728662031773865,
+      "seed": 0
+    },
+    {
+      "separation_snr_db": -4.876858937984698,
+      "snr_improvement_db": 25.935919211849303,
+      "waveform_correlation": -0.4522463589469093,
+      "spatial_correlation": 0.2107202761224677,
+      "artifact_residual_fraction": 0.9121374130923917,
+      "raw_snr_db": -30.812778149834,
+      "pulse_rms": 1.351547178619487,
+      "artifact_rms": 45.01898332598872,
+      "seed": 1
+    },
+    {
+      "separation_snr_db": -1.2283326578233236,
+      "snr_improvement_db": 27.48548313401286,
+      "waveform_correlation": 0.9473599666714212,
+      "spatial_correlation": 0.44765132820292536,
+      "artifact_residual_fraction": 0.28399533426731177,
+      "raw_snr_db": -28.713815791836183,
+      "pulse_rms": 1.2250316814062012,
+      "artifact_rms": 31.068922988584802,
+      "seed": 2
+    },
+    {
+      "separation_snr_db": 1.6467335438580504,
+      "snr_improvement_db": 26.26279428119324,
+      "waveform_correlation": 0.9588622904139609,
+      "spatial_correlation": 0.6116020354357202,
+      "artifact_residual_fraction": 0.003214271994471536,
+      "raw_snr_db": -24.61606073733519,
+      "pulse_rms": 3.1068221600879293,
+      "artifact_rms": 52.728137306863516,
+      "seed": 3
+    },
+    {
+      "separation_snr_db": -5.008255320822234,
+      "snr_improvement_db": 21.901903272119306,
+      "waveform_correlation": -0.27307496057049796,
+      "spatial_correlation": 0.20756117958215187,
+      "artifact_residual_fraction": 0.4353575922887348,
+      "raw_snr_db": -26.91015859294154,
+      "pulse_rms": 2.363858037969123,
+      "artifact_rms": 70.81846833891412,
+      "seed": 4
+    },
+    {
+      "separation_snr_db": -11.91113004105,
+      "snr_improvement_db": 18.229591085243282,
+      "waveform_correlation": 0.42154433948574466,
+      "spatial_correlation": 0.38965886298160346,
+      "artifact_residual_fraction": 0.9656637433967058,
+      "raw_snr_db": -30.140721126293283,
+      "pulse_rms": 1.6291047052728016,
+      "artifact_rms": 37.23417078188139,
+      "seed": 5
+    },
+    {
+      "separation_snr_db": -8.399708612890144,
+      "snr_improvement_db": 24.763583762001225,
+      "waveform_correlation": 0.2995202085433559,
+      "spatial_correlation": 0.6174636902994091,
+      "artifact_residual_fraction": 1.9236286139139027,
+      "raw_snr_db": -33.16329237489137,
+      "pulse_rms": 0.9492687920714353,
+      "artifact_rms": 23.760926473425812,
+      "seed": 6
+    },
+    {
+      "separation_snr_db": -12.161527796054909,
+      "snr_improvement_db": 7.823991345946229,
+      "waveform_correlation": 0.7826631697417079,
+      "spatial_correlation": 0.31363839810395316,
+      "artifact_residual_fraction": 1.304776627979025,
+      "raw_snr_db": -19.985519142001138,
+      "pulse_rms": 3.2167866654850363,
+      "artifact_rms": 33.86865218420479,
+      "seed": 7
+    },
+    {
+      "separation_snr_db": 0.7570312565834113,
+      "snr_improvement_db": 15.06774289704724,
+      "waveform_correlation": 0.7050271986250374,
+      "spatial_correlation": 0.5224757185541783,
+      "artifact_residual_fraction": 0.7532208582931527,
+      "raw_snr_db": -14.310711640463827,
+      "pulse_rms": 2.0853188127770146,
+      "artifact_rms": 18.19057964537962,
+      "seed": 8
+    },
+    {
+      "separation_snr_db": -4.173320045794463,
+      "snr_improvement_db": 27.11945879677949,
+      "waveform_correlation": 0.030939891590260983,
+      "spatial_correlation": 0.6424641297545132,
+      "artifact_residual_fraction": 0.027316634855370225,
+      "raw_snr_db": -31.292778842573952,
+      "pulse_rms": 2.2588108459680196,
+      "artifact_rms": 81.87169378140642,
+      "seed": 9
+    }
+  ],
+  "degree_sweep_gaussian": [
+    {
+      "separation_snr_db": -17.399358362355358,
+      "snr_improvement_db": 12.625666883638466,
+      "waveform_correlation": -0.156738609028936,
+      "spatial_correlation": 0.4260680184216774,
+      "artifact_residual_fraction": 0.5629334919012213,
+      "raw_snr_db": -30.025025245993824,
+      "pulse_rms": 1.6676859124304986,
+      "artifact_rms": 40.72544021892161,
+      "degree": 1
+    },
+    {
+      "separation_snr_db": -4.608364982105371,
+      "snr_improvement_db": 25.408030449839874,
+      "waveform_correlation": -0.20515736431600323,
+      "spatial_correlation": 0.4447719100002904,
+      "artifact_residual_fraction": 0.4975413921939352,
+      "raw_snr_db": -30.016395431945245,
+      "pulse_rms": 1.6672122029204446,
+      "artifact_rms": 40.70917112322973,
+      "degree": 2
+    },
+    {
+      "separation_snr_db": -8.866232130293739,
+      "snr_improvement_db": 21.15429413557175,
+      "waveform_correlation": -0.17931606954760695,
+      "spatial_correlation": 0.2692985097586253,
+      "artifact_residual_fraction": 0.5328116056002536,
+      "raw_snr_db": -30.020526265865488,
+      "pulse_rms": 1.6668473873890757,
+      "artifact_rms": 40.72916837986117,
+      "degree": 3
+    }
+  ]
+}

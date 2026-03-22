@@ -33,6 +33,8 @@ def run_separation_on_simulator_data(
     num_frames: int = 150,
     poly_degree: int = 2,
     use_gaussian: bool = False,
+    n_iterations: int = 1,
+    method: str = "sequential",
 ) -> dict:
     """Generate data from the simulator and run separation."""
     cfg = SimulatorConfig(num_frames=num_frames, fps=30.0, seed=seed)
@@ -40,18 +42,31 @@ def run_separation_on_simulator_data(
     gt = ds.ground_truth
 
     # Use rest positions in mm for the polynomial fit grid
-    # Since simulator gives us pixel coords, we need the mm grid
     base_points, grid_shape = sim.get_base_grid(sim.MechanicalConfig())
     grid_x_mm = base_points[:, 0].reshape(grid_shape)
     grid_y_mm = base_points[:, 1].reshape(grid_shape)
 
-    sep_cfg = SeparationConfig(
-        polyfit=PolyFitConfig(degree=poly_degree),
-        use_temporal_prefilter=False,
-        use_gaussian_extraction=use_gaussian,
-    )
+    if method == "joint":
+        from src.separation.joint_model import JointModelConfig, joint_separate
+        jcfg = JointModelConfig(poly_degree=poly_degree)
+        disp = ds.markers.displacements_from_rest()
+        recovered_pulse, estimated_artifact = joint_separate(
+            grid_x_mm, grid_y_mm, disp, gt.artery_mask, jcfg
+        )
 
-    result = separate(ds.markers, grid_x_mm, grid_y_mm, gt.artery_mask, sep_cfg)
+        class _Result:
+            pass
+        result = _Result()
+        result.recovered_pulse = recovered_pulse
+        result.estimated_artifact = estimated_artifact
+    else:
+        sep_cfg = SeparationConfig(
+            polyfit=PolyFitConfig(degree=poly_degree),
+            use_temporal_prefilter=False,
+            use_gaussian_extraction=use_gaussian,
+            n_iterations=n_iterations,
+        )
+        result = separate(ds.markers, grid_x_mm, grid_y_mm, gt.artery_mask, sep_cfg)
 
     # Relative ground truth
     pulse_rel = gt.pulse_displacement - gt.pulse_displacement[0:1]
@@ -128,22 +143,59 @@ def main():
                 print(f"    {key}: mean={np.mean(vals):.3f}  std={np.std(vals):.3f}  "
                       f"min={np.min(vals):.3f}  max={np.max(vals):.3f}")
 
-    # 3. Polynomial degree sweep with Gaussian extraction
-    print("\n=== Degree Sweep (with Gaussian extraction) ===")
-    degree_results = []
-    for degree in [1, 2, 3]:
-        print(f"  Degree {degree}...", end=" ", flush=True)
+    # 3. Iterative separation (3 iterations)
+    print("\n=== Iterative Separation (3 iterations) ===")
+    iter_results = []
+    for seed in range(10):
+        print(f"  Seed {seed}...", end=" ", flush=True)
         try:
-            r = run_separation_on_simulator_data(seed=0, num_frames=150, poly_degree=degree, use_gaussian=True)
-            r["degree"] = degree
-            degree_results.append(r)
+            r = run_separation_on_simulator_data(
+                seed=seed, num_frames=150, use_gaussian=True, n_iterations=3
+            )
+            r["seed"] = seed
+            iter_results.append(r)
             print(f"SNR_imp={r['snr_improvement_db']:.1f}dB  "
                   f"wfm={r['waveform_correlation']:.3f}  "
                   f"art_res={r['artifact_residual_fraction']:.4f}")
         except Exception as e:
             print(f"FAILED: {e}")
-            degree_results.append({"error": str(e), "degree": degree})
-    results["degree_sweep_gaussian"] = degree_results
+            iter_results.append({"error": str(e), "seed": seed})
+    results["iterative_3"] = iter_results
+
+    # 4. Joint model
+    print("\n=== Joint Model ===")
+    joint_results = []
+    for seed in range(10):
+        print(f"  Seed {seed}...", end=" ", flush=True)
+        try:
+            r = run_separation_on_simulator_data(
+                seed=seed, num_frames=150, method="joint"
+            )
+            r["seed"] = seed
+            joint_results.append(r)
+            print(f"SNR_imp={r['snr_improvement_db']:.1f}dB  "
+                  f"wfm={r['waveform_correlation']:.3f}  "
+                  f"art_res={r['artifact_residual_fraction']:.4f}")
+        except Exception as e:
+            print(f"FAILED: {e}")
+            joint_results.append({"error": str(e), "seed": seed})
+    results["joint_model"] = joint_results
+
+    # Summary comparison
+    print("\n=== SUMMARY ===")
+    for label, res_list in [
+        ("Poly only", poly_results),
+        ("Poly+Gaussian", gauss_results),
+        ("Iterative (3x)", iter_results),
+        ("Joint model", joint_results),
+    ]:
+        valid = [r for r in res_list if "error" not in r]
+        if valid:
+            print(f"\n  {label} ({len(valid)} successful):")
+            for key in ["snr_improvement_db", "waveform_correlation", "artifact_residual_fraction"]:
+                vals = [r[key] for r in valid]
+                print(f"    {key}: mean={np.mean(vals):.3f}  std={np.std(vals):.3f}  "
+                      f"min={np.min(vals):.3f}  max={np.max(vals):.3f}")
 
     # Save results
     out_path = Path(__file__).parent / "physics_artifact_results.json"

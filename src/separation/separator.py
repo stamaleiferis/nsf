@@ -33,6 +33,7 @@ class SeparationConfig:
     gaussian: GaussianExtractorConfig | None = None
     use_temporal_prefilter: bool = True
     use_gaussian_extraction: bool = False
+    n_iterations: int = 1
 
     def __post_init__(self) -> None:
         if self.filter is None:
@@ -104,35 +105,42 @@ def separate(
 
     # Step 1: Displacements from rest
     displacements = markers.displacements_from_rest(rest_frame=0)
-
-    # Step 2: Weighted polynomial fit with coefficient smoothing
-    # Fit polynomial per frame on raw data (captures full artifact bandwidth),
-    # then lowpass the coefficients to remove pulsatile contamination.
     weights = weights_from_artery_mask(artery_mask)
 
-    if config.use_temporal_prefilter:
-        estimated_artifact = fit_polynomial_smooth_coeffs(
-            grid_x, grid_y, displacements, weights, config.polyfit,
-            fps=markers.fps,
-            smooth_cutoff_hz=config.filter.lowpass_cutoff_hz,
-        )
-    else:
-        estimated_artifact = fit_polynomial_all_frames(
-            grid_x, grid_y, displacements, weights, config.polyfit
-        )
+    # Iterative separation loop:
+    #   1. Fit polynomial to (data - current_pulse_estimate)
+    #   2. Subtract polynomial → residual
+    #   3. Extract pulse from residual via Gaussian projection
+    #   4. Repeat with refined pulse estimate
+    current_pulse_estimate = np.zeros_like(displacements)
 
-    # Step 3: Subtract artifact estimate from raw displacements
-    residual = displacements - estimated_artifact
+    for iteration in range(config.n_iterations):
+        # Fit polynomial to data with pulse removed
+        fit_data = displacements - current_pulse_estimate
 
-    # Step 4 (optional): Gaussian spatial model extraction
-    # Projects the residual onto the known artery spatial pattern,
-    # rejecting spatially inconsistent artifact residuals.
-    if config.use_gaussian_extraction:
-        recovered_pulse = extract_pulse_gaussian(
-            residual, grid_x, grid_y, artery_mask, config.gaussian
-        )
-    else:
-        recovered_pulse = residual
+        if config.use_temporal_prefilter:
+            estimated_artifact = fit_polynomial_smooth_coeffs(
+                grid_x, grid_y, fit_data, weights, config.polyfit,
+                fps=markers.fps,
+                smooth_cutoff_hz=config.filter.lowpass_cutoff_hz,
+            )
+        else:
+            estimated_artifact = fit_polynomial_all_frames(
+                grid_x, grid_y, fit_data, weights, config.polyfit
+            )
+
+        # Subtract artifact from original data
+        residual = displacements - estimated_artifact
+
+        # Extract pulse via Gaussian projection
+        if config.use_gaussian_extraction or config.n_iterations > 1:
+            current_pulse_estimate = extract_pulse_gaussian(
+                residual, grid_x, grid_y, artery_mask, config.gaussian
+            )
+        else:
+            current_pulse_estimate = residual
+
+    recovered_pulse = current_pulse_estimate
 
     return SeparationResult(
         recovered_pulse=recovered_pulse,

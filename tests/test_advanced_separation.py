@@ -9,6 +9,7 @@ from src.synth.artifact import ArtifactConfig
 from src.synth.noise import NoiseConfig
 from src.separation.joint_model import JointModelConfig, joint_separate
 from src.separation.decomposition import DecompositionConfig, decomposition_separate
+from src.separation.subspace_separation import SubspaceConfig, subspace_separate
 from src.separation.metrics import separation_snr, waveform_correlation
 from src.estimation.bp_estimation import (
     segment_beats, extract_beat_morphology, extract_features,
@@ -101,6 +102,36 @@ class TestDecomposition:
         raw_snr = separation_snr(disp, pulse_rel, artifact_rel)
         pca_snr = separation_snr(pulse, pulse_rel, artifact_rel)
         assert pca_snr > raw_snr
+
+
+class TestSubspaceSeparation:
+    def test_output_shapes(self):
+        ds = _make_dataset()
+        gt = ds.ground_truth
+        disp = ds.markers.displacements_from_rest()
+        cfg = SubspaceConfig(n_components=5, mask_threshold=0.3)
+        pulse, artifact = subspace_separate(
+            gt.rest_positions[..., 0], gt.rest_positions[..., 1],
+            disp, gt.artery_mask, cfg,
+        )
+        assert pulse.shape == disp.shape
+        assert artifact.shape == disp.shape
+
+    def test_improves_snr(self):
+        ds = _make_dataset()
+        gt = ds.ground_truth
+        disp = ds.markers.displacements_from_rest()
+        pulse_rel = gt.pulse_displacement - gt.pulse_displacement[0:1]
+        artifact_rel = gt.artifact_displacement - gt.artifact_displacement[0:1]
+
+        cfg = SubspaceConfig(n_components=10)
+        pulse, _ = subspace_separate(
+            gt.rest_positions[..., 0], gt.rest_positions[..., 1],
+            disp, gt.artery_mask, cfg,
+        )
+        raw_snr = separation_snr(disp, pulse_rel, artifact_rel)
+        sub_snr = separation_snr(pulse, pulse_rel, artifact_rel)
+        assert sub_snr > raw_snr
 
 
 class TestBeatSegmentation:

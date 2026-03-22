@@ -20,6 +20,7 @@ All phases complete — project at maintenance/iteration stage.
 - 2026-03-22: Completed Phase 4 — parameter estimation infrastructure (pulse_extractor.py, spatial_fit.py, artifact_stats.py, param_library.py). 67 tests passing. Validated close-the-loop on synthetic data.
 - 2026-03-22: Completed Phase 5 — joint model separation, ICA/PCA baselines, BP estimation with beat morphology and calibration framework. 80 tests passing.
 - 2026-03-22: Completed Phase 6 — end-to-end pipeline (pipeline.py), real-time separator (<1ms per frame). All 6 phases done. 89 tests passing.
+- 2026-03-22: Tuning (#7): added subspace_separation.py, hybrid poly→subspace→Gaussian (24.5 dB). Iterative separation didn't help. Tests (#8): 102 tests, CI via GitHub Actions, edge case tests, viz smoke tests. Summary (#9): project_summary.ipynb notebook.
 
 ## Workflow
 - **Start of session:** Run `gh issue list` and check this file to orient yourself
@@ -31,7 +32,7 @@ All phases complete — project at maintenance/iteration stage.
 ## Build & Test
 - Python project, use pytest for tests
 - Run: `cd /home/stam/nsf && python -m pytest tests/`
-- No CI yet — run tests locally before committing
+- CI via GitHub Actions (`.github/workflows/tests.yml`) on Python 3.10-3.12
 
 ## Coding Standards
 - Python 3.10+, type hints on public APIs

@@ -27,6 +27,7 @@ class PulseConfig:
     artery_center_y_mm: float = 0.0
     artery_angle_deg: float = 0.0
     sigma_mm: float = 3.0
+    sigma_along_mm: float = 8.0
     lateral_shear_ratio: float = 0.3
     camera_tilt_deg: float = 40.0
 
@@ -62,18 +63,23 @@ def artery_mask(
 ) -> np.ndarray:
     """Compute soft artery influence mask (R, C) in [0, 1].
 
-    The mask is a Gaussian centered on the artery, measuring the
-    cross-artery distance (perpendicular to the artery direction).
+    The mask is a 2D Gaussian centered on the artery:
+    - Cross-artery (perpendicular): sigma_mm (~3mm, artery width + tissue diffusion)
+    - Along-artery (longitudinal): sigma_along_mm (~8mm, finite pulse influence zone)
     """
     angle_rad = np.radians(config.artery_angle_deg)
     dx = grid_x - config.artery_center_x_mm
     dy = grid_y - config.artery_center_y_mm
 
-    # Cross-artery distance (perpendicular to artery direction)
+    # Rotate to artery-aligned frame
     cross_dist = dx * np.cos(angle_rad) - dy * np.sin(angle_rad)
+    along_dist = dx * np.sin(angle_rad) + dy * np.cos(angle_rad)
 
-    mask = np.exp(-(cross_dist ** 2) / (2 * config.sigma_mm ** 2))
-    return mask
+    # 2D Gaussian: narrow across artery, wider along artery
+    cross_gauss = np.exp(-(cross_dist ** 2) / (2 * config.sigma_mm ** 2))
+    along_gauss = np.exp(-(along_dist ** 2) / (2 * config.sigma_along_mm ** 2))
+
+    return cross_gauss * along_gauss
 
 
 def pulse_displacement_field(
@@ -97,11 +103,14 @@ def pulse_displacement_field(
     dx = grid_x - config.artery_center_x_mm
     dy = grid_y - config.artery_center_y_mm
 
-    # Cross-artery distance
+    # Rotate to artery-aligned frame
     cross_dist = dx * np.cos(angle_rad) - dy * np.sin(angle_rad)
+    along_dist = dx * np.sin(angle_rad) + dy * np.cos(angle_rad)
 
-    # Gaussian spatial profile (Z-displacement projected)
-    gauss = np.exp(-(cross_dist ** 2) / (2 * config.sigma_mm ** 2))
+    # 2D Gaussian spatial profile
+    cross_gauss = np.exp(-(cross_dist ** 2) / (2 * config.sigma_mm ** 2))
+    along_gauss = np.exp(-(along_dist ** 2) / (2 * config.sigma_along_mm ** 2))
+    gauss = cross_gauss * along_gauss
 
     # Y-displacement (dominant): Z-bulge projected through camera tilt
     tilt_factor = np.sin(np.radians(config.camera_tilt_deg))
@@ -112,7 +121,7 @@ def pulse_displacement_field(
         config.lateral_shear_ratio
         * config.amplitude_mm
         * (-cross_dist / config.sigma_mm ** 2)
-        * np.exp(-(cross_dist ** 2) / (2 * config.sigma_mm ** 2))
+        * cross_gauss * along_gauss
     )
 
     # Rotate displacement components back to grid frame

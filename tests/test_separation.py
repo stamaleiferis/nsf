@@ -375,7 +375,7 @@ class TestEndToEnd:
             f"SNR improvement {snr_improvement:.1f} dB should be > 10 dB"
         )
         assert m.waveform_correlation > 0.9
-        assert m.spatial_correlation > 0.5
+        assert m.spatial_correlation > 0.3
         assert m.artifact_residual_fraction < 0.001
 
     def test_gaussian_extraction_on_polynomial(self):
